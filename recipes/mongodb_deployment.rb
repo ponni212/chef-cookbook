@@ -17,7 +17,7 @@ end
 # install Mongo DB
 mongoDB_client = node['database']['client']['path']
 yum_package mongoDB_client do
-  action :install
+  action [:install, :start]
   timeout 36000
   only_if {  node['platform_family'].casecmp('RHEL') }
 end

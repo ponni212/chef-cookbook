@@ -1,0 +1,29 @@
+---
+driver_plugin: vagrant
+driver_plugin:
+  provider: true
+  provider: openstake
+  vagrantfile_erb: ./vagrantfile-vagrant_unix
+provisioner:
+  data_bags_path: test/data_bags
+  name: chef
+  require_chef_omnibus: false
+  username: root
+  key_name: testkitchen
+  role_path: role
+  network: false
+transport:
+  ssh_key: ./.ssh/testkitchen-pem
+verifier:
+  name: inspec
+  format: docmentation
+
+platform:
+  - name: rhel7
+    x-box_type: stable
+    x-box_rev: 0
+    x-size: medium
+suites:
+  - name: chef-cookbook
+    run_list:
+      - role[chef-cookbook]
