@@ -50,4 +50,12 @@ apache-http_chef application_identifier do
   action :create
 end
 
-
+include_recipe 'mysql_chef'
+mysql_chef application_identifier do
+  action :create
+end
+cert_request 'qet_certificate' do
+  action :create
+  ca_env 'dev'
+  cert_format 'x509'
+end

@@ -5,7 +5,7 @@ include_recipes 'b_iac_cc_java::install_openjre_Zulu8'
 remote_file 'Zulu-jdk-8 package' do
   source 'https://java.downlodes.com/zulu'
   path '/usr/java/zulu.tar.gz'
-  action: create
+  action :create
 end
 
 bash 'untar Zulu-jdk-8 package'
@@ -25,5 +25,8 @@ tomcat_2021 application_identifier do
   action [:create, :install]
 end
 
-
-
+cert_request 'qet_certificate' do
+  action :create
+  ca_env 'dev'
+  cert_format 'x509'
+end
