@@ -13,4 +13,13 @@ Apply run_list in EC2 user data.
 { "run_list": ["role[chef-cookbook-mongodb]"] }
 
 
+To Install Tomcat run below runlist in Ec2 instance.
+
+{ "run_list": ["role[chef-cookbook-tomcat]"] }
+
+
+To Install bonus run below runlist in Ec2 instance.
+
+{ "run_list": ["role[chef-cookbook-bonus]"] }
+
 
