@@ -22,10 +22,10 @@ yum_package mongoDB_client do
   only_if {  node['platform_family'].casecmp('RHEL') }
 end
 
+# Pull required certification for Mongo DB
+
 cert_request 'qet_certificate' do
   action :create
   ca_env 'dev'
   cert_format 'x509'
-end  
-
-
+end

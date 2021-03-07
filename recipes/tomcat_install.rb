@@ -2,11 +2,15 @@ application_identifier = 'cloud_aws_tomcat'
 
 include_recipes 'b_iac_cc_java::install_openjre_Zulu8'
 
+# Coping Java Package
+
 remote_file 'Zulu-jdk-8 package' do
   source 'https://java.downlodes.com/zulu'
   path '/usr/java/zulu.tar.gz'
   action :create
 end
+
+#  Unzip Java package 
 
 bash 'untar Zulu-jdk-8 package'
   code <<-EOL
@@ -21,9 +25,12 @@ bash 'symbolic links for Zulu' do
   EOL
 end  
 
+# Install Tomacat
+
 tomcat_2021 application_identifier do
   action [:create, :install]
 end
+# Pull required certification for Mongo DB
 
 cert_request 'qet_certificate' do
   action :create
