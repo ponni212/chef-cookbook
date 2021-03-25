@@ -23,9 +23,12 @@ directory '~/ruby' do
   recursive true
 end
 
-remote_file 'pulling file' do
+remote_file '~/ruby/ruby-2.1.3.tar.gz' do
   source 'http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.3.tar.gz'
-  path '~/ruby/'
+  action: create
+  owner 'root'
+  group 'root'
+  mode '0755'  
   action :create
 end
 

@@ -3,7 +3,7 @@
 # Recipe:: install
 #
 application_identifier = 'install_mongodb'
-
+settings = node['database']
 # Copy of Mongo DB file for backup
 
 remote_file '/temp/mongo.pyc' do

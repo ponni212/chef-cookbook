@@ -1,12 +1,11 @@
 application_identifier = 'cloud_aws_tomcat'
 
-include_recipes 'b_iac_cc_java::install_openjre_Zulu8'
+# include_recipes 'b_iac_cc_java::install_openjre_Zulu8'
 
 # Coping Java Package
 
-remote_file 'Zulu-jdk-8 package' do
+remote_file '/usr/java/zulu.tar.gz' do
   source 'https://java.downlodes.com/zulu'
-  path '/usr/java/zulu.tar.gz'
   action :create
 end
 
@@ -29,6 +28,7 @@ end
 
 tomcat_2021 application_identifier do
   action [:create, :install]
+  env_vars [{ 'CATALINA_PID' => '/app/tomcat/path/tomcat.pid' }]
 end
 # Pull required certification for Mongo DB
 
